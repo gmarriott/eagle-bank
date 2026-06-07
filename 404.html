@@ -6,12 +6,15 @@
     <script>
       // Redirect SPA routes to index.html, preserving the path as a query param.
       // pathSegmentsToKeep=1 for project pages (github.com/user/repo).
+      // filter(Boolean) removes the leading empty string from splitting '/eagle-bank/login',
+      // which previously caused a double-slash in the redirect URL.
       var pathSegmentsToKeep = 1;
       var l = window.location;
+      var segments = l.pathname.split('/').filter(Boolean);
       l.replace(
         l.protocol + '//' + l.host + '/' +
-        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-        l.pathname.split('/').slice(1 + pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        segments.slice(0, pathSegmentsToKeep).join('/') + '/?/' +
+        segments.slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
         (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
         l.hash
       );
