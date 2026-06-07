@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/eagle-bank/eagle.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0E2A2B" />
+    <meta
+      name="description"
+      content="Eagle Bank - manage your accounts, transactions and profile securely."
+    />
+    <title>Eagle Bank</title>
+
+    <!-- Preconnect to font host for faster first paint -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="/eagle-bank/assets/index-qnV8jjkO.js"></script>
+    <link rel="modulepreload" crossorigin href="/eagle-bank/assets/data-vendor-arlMLg9x.js">
+    <link rel="modulepreload" crossorigin href="/eagle-bank/assets/react-vendor-D7rJxdx7.js">
+    <link rel="stylesheet" crossorigin href="/eagle-bank/assets/index-BN5Ec-KE.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // Decode the path encoded by 404.html and restore it via history.replaceState
+      // so the SPA router sees the original URL on direct navigation / refresh.
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) { return s.replace(/~and~/g, '&'); })
+            .join('?');
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      }(window.location));
+    </script>
+  </body>
+</html>
