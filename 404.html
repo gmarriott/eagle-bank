@@ -4,20 +4,9 @@
     <meta charset="UTF-8" />
     <title>Eagle Bank</title>
     <script>
-      // Redirect SPA routes to index.html, preserving the path as a query param.
-      // pathSegmentsToKeep=1 for project pages (github.com/user/repo).
-      // filter(Boolean) removes the leading empty string from splitting '/eagle-bank/login',
-      // which previously caused a double-slash in the redirect URL.
-      var pathSegmentsToKeep = 1;
-      var l = window.location;
-      var segments = l.pathname.split('/').filter(Boolean);
-      l.replace(
-        l.protocol + '//' + l.host + '/' +
-        segments.slice(0, pathSegmentsToKeep).join('/') + '/?/' +
-        segments.slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-        l.hash
-      );
+      // With HashRouter all routes are hash fragments (#/path) so the server
+      // never sees them. Any 404 just means a bad pathname — redirect to root.
+      window.location.replace('/eagle-bank/');
     </script>
   </head>
   <body></body>
