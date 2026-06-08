@@ -1,0 +1,38 @@
+[
+  {
+    "id": "acc_savings_01",
+    "userId": "usr_001",
+    "accountNumber": "0330 0122 4821",
+    "type": "savings",
+    "status": "active",
+    "availableBalanceMinor": 1250000,
+    "currency": "GBP"
+  },
+  {
+    "id": "acc_credit_01",
+    "userId": "usr_001",
+    "accountNumber": "0330 0123 7390",
+    "type": "credit",
+    "status": "active",
+    "availableBalanceMinor": -56500,
+    "currency": "GBP"
+  },
+  {
+    "id": "acc_savings_02",
+    "userId": "usr_001",
+    "accountNumber": "0330 0124 1102",
+    "type": "savings",
+    "status": "active",
+    "availableBalanceMinor": 200000,
+    "currency": "GBP"
+  },
+  {
+    "id": "acc_savings_03",
+    "userId": "usr_001",
+    "accountNumber": "0330 0125 1503",
+    "type": "savings",
+    "status": "closed",
+    "availableBalanceMinor": 0,
+    "currency": "GBP"
+  }
+]

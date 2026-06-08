@@ -1,0 +1,284 @@
+@import "tailwindcss";
+
+/* =========================================================================
+   Design Tokens — Tailwind v4 @theme
+   All tokens are exposed as CSS custom properties AND as Tailwind utilities.
+   e.g. --color-primary → bg-primary / text-primary / border-primary
+   ========================================================================= */
+
+@theme {
+  /* Fonts */
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Font sizes — override Tailwind's xl+ to match the design's major-third scale */
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.25rem;
+  --text-4xl: 3rem;
+
+  /* Line heights */
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-normal: 1.55;
+
+  /* Palette — raw colour ramps */
+  --color-green-900: #0e2a2b;
+  --color-green-800: #123a39;
+  --color-green-700: #0f4c45;
+  --color-green-600: #14625a;
+  --color-green-500: #1f7a6f;
+  --color-gold-600: #a06d2e;
+  --color-gold-500: #c2884e;
+  --color-gold-400: #d6a978;
+  --color-paper: #fbf9f4;
+  --color-paper-200: #f3efe6;
+  --color-paper-300: #e7e2d8;
+  --color-slate-500: #5a6664;
+  --color-slate-400: #828d8b;
+
+  /* Semantic surface colours */
+  --color-canvas: #fbf9f4;
+  --color-surface: #ffffff;
+  --color-surface-sunken: #f3efe6;
+  --color-border: #e7e2d8;
+  --color-border-strong: #d3cdc0;
+
+  /* Semantic text colours */
+  --color-text: #0e2a2b;
+  --color-text-muted: #5a6664;
+  --color-text-subtle: #828d8b;
+  --color-text-inverse: #fbf9f4;
+
+  /* Brand primary */
+  --color-primary: #3696fc;
+  --color-primary-hover: #1a84f0;
+  --color-primary-active: #0e72dc;
+  --color-on-primary: #ffffff;
+
+  /* Accent */
+  --color-accent: #c2884e;
+  --color-accent-hover: #a06d2e;
+
+  /* Sidebar */
+  --color-sidebar: #0a1f3d;
+  --color-sidebar-text: #c8d4d1;
+  --color-sidebar-text-active: #ffffff;
+  --color-sidebar-hover: rgba(255, 255, 255, 0.07);
+
+  /* Status */
+  --color-positive: #1b7a4b;
+  --color-positive-text: #15633c;
+  --color-positive-bg: #e7f3ec;
+  --color-negative: #b23a48;
+  --color-negative-text: #8f2f3a;
+  --color-negative-bg: #f8e9eb;
+  --color-warning-text: #8a5a12;
+  --color-warning-bg: #fbf0db;
+  --color-info-text: #1d4f6b;
+  --color-info-bg: #e4eff5;
+
+  /* Focus */
+  --color-focus-ring: #3696fc;
+
+  /* Border radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(14, 42, 43, 0.06);
+  --shadow-md: 0 4px 16px rgba(14, 42, 43, 0.08);
+  --shadow-lg: 0 18px 48px rgba(14, 42, 43, 0.14);
+
+  /* Named animations — referenced as animate-fade-in, animate-shimmer, etc. */
+  --animate-fade-in: thb-fade-in 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-in-fast: thb-fade-in 120ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-in-slow: thb-fade-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-shimmer: thb-shimmer 1.3s infinite linear;
+  --animate-spin-ring: thb-spin 0.7s linear infinite;
+}
+
+/* Layout & motion tokens — used via var() in components, not Tailwind utilities */
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 120ms;
+  --duration-base: 220ms;
+  --duration-slow: 420ms;
+  --sidebar-width: 264px;
+  --topbar-height: 68px;
+  --content-max: 1180px;
+  --z-sticky: 50;
+  --z-overlay: 100;
+  --z-modal: 110;
+  --z-toast: 120;
+
+  /* Pre-computed color-mix values for focus/error rings */
+  --shadow-focus: 0 0 0 3px color-mix(in srgb, var(--color-focus-ring) 18%, transparent);
+  --shadow-focus-error: 0 0 0 3px color-mix(in srgb, var(--color-negative) 18%, transparent);
+  --border-alert: color-mix(in srgb, var(--color-negative) 30%, transparent);
+  --topbar-bg: color-mix(in srgb, var(--color-canvas) 85%, transparent);
+}
+
+/* =========================================================================
+   Base / Reset extras (Tailwind preflight covers most of it)
+   ========================================================================= */
+
+body {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--color-text);
+  background-color: var(--color-canvas);
+  min-height: 100vh;
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(194, 136, 78, 0.04), transparent 40%),
+    radial-gradient(circle at 88% 8%, rgba(15, 76, 69, 0.05), transparent 45%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4 {
+  line-height: var(--leading-tight);
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+a {
+  text-decoration: none;
+}
+
+#root {
+  isolation: isolate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================================
+   Focus
+   ========================================================================= */
+
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* =========================================================================
+   Global utility classes (referenced directly in JSX)
+   ========================================================================= */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -64px;
+  z-index: var(--z-toast);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  transition: top var(--duration-fast) var(--ease-out);
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* =========================================================================
+   Keyframes
+   ========================================================================= */
+
+@keyframes thb-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes thb-shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position:  400px 0; }
+}
+
+@keyframes thb-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* =========================================================================
+   Stagger page-entrance helper — applied to grid/list wrappers
+   ========================================================================= */
+
+.stagger > * {
+  animation: thb-fade-in var(--duration-base) var(--ease-out) both;
+}
+.stagger > *:nth-child(2) { animation-delay: 60ms; }
+.stagger > *:nth-child(3) { animation-delay: 120ms; }
+.stagger > *:nth-child(4) { animation-delay: 180ms; }
+.stagger > *:nth-child(5) { animation-delay: 240ms; }
+
+/* =========================================================================
+   Spinner — border uses color-mix(), kept here rather than in component
+   ========================================================================= */
+
+.spinner-ring {
+  display: inline-block;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, currentColor 25%, transparent);
+  border-top-color: currentColor;
+  animation: thb-spin 0.7s linear infinite;
+}
+
+/* =========================================================================
+   Skeleton — shimmer uses complex gradient + color-mix, kept here
+   ========================================================================= */
+
+.skeleton-shimmer {
+  display: block;
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-sunken) 25%,
+    color-mix(in srgb, var(--color-surface-sunken) 55%, #fff) 50%,
+    var(--color-surface-sunken) 75%
+  );
+  background-size: 800px 100%;
+  border-radius: var(--radius-sm);
+  animation: thb-shimmer 1.3s infinite linear;
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "id": "usr_001",
+    "fullName": "George Marriott",
+    "email": "george@eaglebank.test",
+    "phone": "+44 7700 900123",
+    "address": "41 Lake, Stockport, SK18UN",
+    "password": "password123",
+    "avatarUrl": null,
+    "createdAt": "2026-06-01T09:30:00.000Z"
+  }
+]
